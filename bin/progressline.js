@@ -1,9 +1,10 @@
 const cliProgress = require('cli-progress');
 const colors = require('ansi-colors');
+const notifier = require('node-notifier');
 
 let interval;
 
-const runBar = (timer, elapsed = 0) => {
+const runBar = ({timer, elapsed=0}) => {
     const bar1 = new cliProgress.SingleBar({
         format: 'Current session |' + colors.cyan('{bar}') + '| {percentage}% | {remainingTime}',
     }, cliProgress.Presets.shades_classic);
@@ -28,9 +29,17 @@ const runBar = (timer, elapsed = 0) => {
         
         if(remainingTime <= 0) {
             clearInterval(interval);
+            bar1.update(100, {remainingTime: convertToMinutes(0)});
             bar1.stop();
             console.log(colors.green('Time is up!'));
-            process.exit(0);
+            notifier.notify({
+                title: 'pmdoro',
+                message: 'Time is up!',
+                sound: true, 
+                wait: true 
+              },
+              function (err, response, metadata) {
+              })
         }
     
         const persentage = Math.floor((elapsedTime / timer) * 100);

@@ -1,15 +1,16 @@
 #!/usr/bin/env node
 
-const  readline = require('readline');
+const readline = require('readline');
 const colors = require('ansi-colors');
-
-const DEFAULT_TIMER = 25 * 60 * 1000;
 const {runBar} = require('./progressline.js');
 
+
+// const DEFAULT_TIMER = 25 * 60 * 1000;
+const DEFAULT_TIMER = 2 * 1000;
 let elapsed = 0;
 
 
-let stopBar = runBar(DEFAULT_TIMER);
+let stopBar = runBar({timer:DEFAULT_TIMER, elapsed});
 
 readline.emitKeypressEvents(process.stdin);
 
@@ -22,7 +23,7 @@ process.stdin.on('keypress', (ch, key) => {
     }
 
     if (key && key.name == 'r') {
-        runBar(DEFAULT_TIMER, elapsed);
+        runBar({timer:DEFAULT_TIMER, elapsed});
     }
 
     if (key && key.ctrl && key.name == 'c') {
