@@ -1,15 +1,31 @@
 {
-  "name": "pmdoro",
+  "name": "@maxvektor/pmdoro",
   "version": "0.0.1",
   "main": "bin/index.js",
-  "repository": "git@github.com:maxvektor/pmdoro.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/maxvektor/pmdoro.git"
+  },
   "author": "maxvektor",
-  "license": "GNU GPL V3",
+  "license": "GPL-3.0",
   "private": false,
   "bin": {
-    "pmdoro": "./bin/index.js"
+    "pmdoro": "bin/index.js"
   },
   "dependencies": {
     "cli-progress": "^3.12.0"
-  }
+  },
+  "description": "CLI utility for Pomodoro framework",
+  "bugs": {
+    "url": "https://github.com/maxvektor/pmdoro/issues"
+  },
+  "homepage": "https://github.com/maxvektor/pmdoro#readme",
+  "devDependencies": {},
+  "scripts": {
+    "test":  "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pomodoro",
+    "CLI"
+  ]
 }
