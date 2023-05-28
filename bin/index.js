@@ -5,8 +5,7 @@ const colors = require('ansi-colors');
 const {runBar} = require('./progressline.js');
 
 
-// const DEFAULT_TIMER = 25 * 60 * 1000;
-const DEFAULT_TIMER = 2 * 1000;
+const DEFAULT_TIMER = 25 * 60 * 1000;
 let elapsed = 0;
 
 
