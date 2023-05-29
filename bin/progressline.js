@@ -2,11 +2,12 @@ const cliProgress = require('cli-progress');
 const colors = require('ansi-colors');
 const notifier = require('node-notifier');
 
+
 let interval;
 
-const runBar = ({timer, elapsed=0}) => {
+const runBar = ({timer, taskName='Curretn Session', elapsed=0}) => {
     const bar1 = new cliProgress.SingleBar({
-        format: 'Current session |' + colors.cyan('{bar}') + '| {percentage}% | {remainingTime}',
+        format: `${taskName} | ${colors.cyan('{bar}')} | {percentage}% | {remainingTime}`,
     }, cliProgress.Presets.shades_classic);
 
     const startingPersentage = Math.floor((elapsed) / timer * 100);

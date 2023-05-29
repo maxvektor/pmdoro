@@ -3,13 +3,15 @@
 const readline = require('readline');
 const colors = require('ansi-colors');
 const {runBar} = require('./progressline.js');
+const argv = require('./yargsSetup');
 
-
-const DEFAULT_TIMER = 25 * 60 * 1000;
 let elapsed = 0;
 
+const timer = argv.timer * 60 * 1000;
+const taskName = argv.name;
 
-let stopBar = runBar({timer:DEFAULT_TIMER, elapsed});
+
+let stopBar = runBar({timer, elapsed, taskName});
 
 readline.emitKeypressEvents(process.stdin);
 
@@ -22,7 +24,7 @@ process.stdin.on('keypress', (ch, key) => {
     }
 
     if (key && key.name == 'r') {
-        runBar({timer:DEFAULT_TIMER, elapsed});
+        runBar({timer, elapsed,taskName});
     }
 
     if (key && key.ctrl && key.name == 'c') {
